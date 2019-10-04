@@ -16,30 +16,30 @@ app.get('/', function (req, res) {
  }
 
   res.send(`
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>html-blockers</title>
-    <script defer src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <script>
-      var a = document.createElement('script')
-      a.src = 'script2.js'
-      a.async = true;
-      document.body.appendChild(a);
-    </script>
-    <style>body{color: black;}</style>
-    <h1>html-blockers!</h1>
-    <p>${makeid(5)}</p>
-    <link rel="stylesheet" href="style1.css">
-    <script>
-      alert(getComputedStyle(document.body).marginTop);
-    </script>
-  </body>
-  </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>html-blockers</title>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+    var a = document.createElement('script')
+    a.src = 'script2.js'
+    a.async = true;
+    document.body.appendChild(a);
+  </script>
+  <style>body{color: black;}</style>
+  <h1>html-blockers!</h1>
+  <p>${makeid(5)}</p>
+  <link rel="stylesheet" href="style1.css">
+  <script>
+    alert(getComputedStyle(document.body).marginTop);
+  </script>
+</body>
+</html>
   `);
 });
 
