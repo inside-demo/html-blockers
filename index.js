@@ -21,10 +21,16 @@ app.get('/', function (req, res) {
   <head>
     <meta charset="UTF-8">
     <title>html-blockers</title>
-    <script defer async src="script.js"></script>
+    <script defer src="script.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <script>
+      var a = document.createElement('script')
+      a.src = 'script2.js'
+      a.async = true;
+      document.body.appendChild(a);
+    </script>
     <style>body{color: black;}</style>
     <h1>html-blockers!</h1>
     <p>${makeid(5)}</p>
@@ -44,6 +50,15 @@ app.get('/script.js', function (req, res) {
   setTimeout(() => {
     res.send(`alert(1)`);
   }, 6000)
+});
+
+app.get('/script2.js', function (req, res) {
+  res.set({
+    'Content-Type': 'application/javascript'
+  })
+  setTimeout(() => {
+    res.send(`alert(2)`);
+  }, 1000000)
 });
 
 app.get('/style.css', function (req, res) {
