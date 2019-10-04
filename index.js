@@ -79,6 +79,7 @@ app.get('/style1.css', function (req, res) {
   }, 20000);
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+const listener = app.listen(0, function () {
+  console.log(`Example app listening on port ${listener.address().port}
+http://localhost:${listener.address().port}`);
 });
